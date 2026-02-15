@@ -8,25 +8,25 @@
 
 ## Основные CRUD операции
 * Сотрудники:
-GET /employee/ — список сотрудников
-POST /employee/create/ — создать нового сотрудника (может только сотрудник с employee_type manager)
-GET /employee/{id}/retrieve/ — получить информацию о сотруднике
-PUT /employee/{id}/update/ — обновить сотрудника (может только сотрудник с employee_type manager)
-DELETE /employee/{id}/destroy/ — удалить сотрудника (может только сотрудник с employee_type manager)
+- GET /employee/ — список сотрудников
+- POST /employee/create/ — создать нового сотрудника (может только сотрудник с employee_type manager)
+- GET /employee/{id}/retrieve/ — получить информацию о сотруднике
+- PUT /employee/{id}/update/ — обновить сотрудника (может только сотрудник с employee_type manager)
+- DELETE /employee/{id}/destroy/ — удалить сотрудника (может только сотрудник с employee_type manager)
 
 * Задачи:
-GET /tasks/ — список задач
-POST /tasks/ — создать задачу (может только сотрудник с employee_type manager)
-GET /tasks/{id}/ — получить информацию о задаче
-PUT /tasks/{id}/ — обновить задачу (может только сотрудник с employee_type manager)
-DELETE /tasks/{id}/ — удалить задачу (может только сотрудник с employee_type manager)
-POST /tasks/{id}/complete/ — обновить статус задачи на "выполнена" (может только сотрудник с employee_type manager или executor данной задачи)
+- GET /tasks/ — список задач
+- POST /tasks/ — создать задачу (может только сотрудник с employee_type manager)
+- GET /tasks/{id}/ — получить информацию о задаче
+- PUT /tasks/{id}/ — обновить задачу (может только сотрудник с employee_type manager)
+- DELETE /tasks/{id}/ — удалить задачу (может только сотрудник с employee_type manager)
+- POST /tasks/{id}/complete/ — обновить статус задачи на "выполнена" (может только сотрудник с employee_type manager или executor данной задачи)
 
 * Специальные эндпоинты
-GET /employee/busy_employees/
-Запрашивает из БД список сотрудников и их задачи, отсортированный по количеству активных задач.
+- GET /employee/busy_employees/
+1. Запрашивает из БД список сотрудников и их задачи, отсортированный по количеству активных задач.
 
-GET /important_tasks/
+- GET /important_tasks/
 1. Запрашивает из БД задачи, которые не взяты в работу, но от которых зависят другие задачи, взятые в работу.
 2. Реализует поиск по сотрудникам, которые могут взять такие задачи (наименее загруженный сотрудник или сотрудник, выполняющий родительскую задачу, если ему назначено максимум на 2 задачи больше, чем у наименее загруженного сотрудника).
 3. Возвращает список объектов в формате: `{Важная задача, Срок, [ФИО сотрудника]}`.
